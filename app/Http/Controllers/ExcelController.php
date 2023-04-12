@@ -21,7 +21,7 @@ class ExcelController extends Controller
 
     public function index()
     {
-        $excelFiles = ExcelFile::all();
+        $excelFiles = ExcelFile::orderBy('id','DESC')->get();
         return view('excel.listing', compact('excelFiles'));
     }
 
