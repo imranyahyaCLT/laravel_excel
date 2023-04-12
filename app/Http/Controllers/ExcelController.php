@@ -32,6 +32,12 @@ class ExcelController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls'
+        ], [
+            'file.required' => 'Please upload an Excel file',
+            'file.mimes' => 'Only Excel files are allowed'
+        ]);
         $response = $this->excelService->storeExcelData($request);
         if ($response['status'] == 'success') {
             return redirect()->route('excel_lisiting')->with($response);
