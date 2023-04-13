@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('excel_details', function (Blueprint $table) {
             $table->id();
-            $table->string('heading');
             $table->string('value')->nullable();
-            $table->integer('row_number');
+            $table->boolean('is_heading')->default(false);
             $table->unsignedBigInteger('excel_file_id');
             $table->foreign('excel_file_id')->references('id')->on('excel_files')->onDelete('cascade');
             $table->softDeletes();

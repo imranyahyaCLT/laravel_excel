@@ -16,9 +16,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($excelData as $key => $data)
+                    @foreach ($excelData->chunk($headingCount) as $chunkData)
                         <tr>
-                            @foreach ($data as $value)
+                            @foreach ($chunkData as $value)
                                 <th scope="row">{{ $value }}</th>
                             @endforeach
                         </tr>

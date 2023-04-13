@@ -49,7 +49,7 @@ class ExcelController extends Controller
     {
         $response = $this->excelService->showExcelDetail($excelFileId);
         if (isset($response['excelData']) && isset($response['headings'])) {
-            return view('excel.details', ['headings' => $response['headings'] ?? null, 'excelData' => $response['excelData'] ?? null]);
+            return view('excel.details', ['headings' => $response['headings'] ?? null, 'excelData' => $response['excelData'] ?? null, 'headingCount' => $response['headingCount']]);
         }
         return redirect()->back()->with($response);
     }
